@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 public class main extends Application {
 
 	ArrayList<KeyCode> keysPressed = new ArrayList<KeyCode>();
-	int font = 10;
+	
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -29,14 +29,12 @@ public class main extends Application {
 		Car car = new Car(Color.LIGHTCORAL);
 		root.getChildren().add(car);
 		
-		Text t = new Text(100, 100, "This is a test");
-		root.getChildren().add(t);
-		t.setFont(new Font(10));
+
 		
 
 		AnimationTimer at = new AnimationTimer() {
 			int dir = 1;
-
+			
 			@Override
 			public void handle(long now) {
 
@@ -46,9 +44,7 @@ public class main extends Application {
 					dir = dir * -1;
 					car.setRotationAxis(Rotate.Y_AXIS);
 					car.setRotate(car.getRotate() + 180);
-					font += 10;
-					t.setFont(new Font(font));
-				}
+						}
 
 				for (KeyCode key : keysPressed) {
 					switch (key) {
