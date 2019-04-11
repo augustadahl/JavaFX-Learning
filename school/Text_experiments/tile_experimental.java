@@ -72,16 +72,16 @@ public class tile_experimental extends Group {
 	public void move(KeyCode key) {
 		switch (key) {
 		case LEFT:
-			this.setTranslateX(this.getTranslateX() -100);
+			this.setTranslateX(this.getTranslateX() -110);
 			break;
 		case RIGHT:
-			this.setTranslateX(this.getTranslateX() + 100);
+			this.setTranslateX(this.getTranslateX() + 110);
 			break;
 		case UP:
-			this.setTranslateY(this.getTranslateY() - 100);
+			this.setTranslateY(this.getTranslateY() - 110);
 			break;
 		case DOWN:
-			this.setTranslateY(this.getTranslateY() + 100);
+			this.setTranslateY(this.getTranslateY() + 110);
 			break;
 
 		default:

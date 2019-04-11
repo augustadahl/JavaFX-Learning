@@ -26,10 +26,13 @@ public class tile_main extends Application {
 		// visar fönstret
 		primaryStage.show();
 
+		Background back = new Background(4);
+		root.getChildren().add(back);
+		
 		tile_experimental tile = new tile_experimental();
 		root.getChildren().add(tile);
-		tile.setTranslateX(100);
-		tile.setTranslateY(100);
+		tile.setTranslateX(110);
+		tile.setTranslateY(110);
 
 		scene.setOnKeyPressed(e -> {
 
