@@ -73,7 +73,10 @@ public class former extends Application{
 		root.getChildren().add(star);
 		
 		
-		
+		Car car = new Car(Color.BLUE);
+		root.getChildren().add(car);
+		car.setTranslateX(150);
+		car.setTranslateY(150);
 	}
 	
 	
