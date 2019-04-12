@@ -1,4 +1,4 @@
-package Text_experiments;
+package main;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -7,27 +7,28 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class tile_main extends Application {
+public class main extends Application {
+	
+	public static int WindowWidth = 450;
+	public static int WindowHeight = 450;
 
 	public void start(Stage primaryStage) throws Exception {
 
 		Group root = new Group();
-
-		Scene scene = new Scene(root, 500, 500, Color.SKYBLUE);
+		Scene scene = new Scene(root, WindowWidth, WindowHeight, Color.SKYBLUE);
 
 		primaryStage.setScene(scene);
-
 		primaryStage.show();
 
 		Background back = new Background(4);
 		root.getChildren().add(back);
 
-		tile_experimental tile = new tile_experimental();
+		Tile tile = new Tile();
 		root.getChildren().add(tile);
 		tile.setTranslateX(10);
 		tile.setTranslateY(10);
 		
-		tile_experimental tile2 = new tile_experimental();
+		Tile tile2 = new Tile();
 		root.getChildren().add(tile2);
 		tile2.setTranslateX(120);
 		tile2.setTranslateY(120);

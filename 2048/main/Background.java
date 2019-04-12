@@ -1,4 +1,4 @@
-package Text_experiments;
+package main;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;

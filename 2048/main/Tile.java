@@ -1,4 +1,4 @@
-package Text_experiments;
+package main;
 
 import javafx.scene.Group;
 import javafx.scene.input.KeyCode;
@@ -8,14 +8,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class tile_experimental extends Group {
+public class Tile extends Group {
 
 	int value = 2;
 	double fontsize = 55;
 	Rectangle background = new Rectangle();
 	Text number = new Text(50, 55, Integer.toString(value));
 
-	public tile_experimental() {
+	public Tile() {
 
 		background.setWidth(100);
 		background.setHeight(100);
