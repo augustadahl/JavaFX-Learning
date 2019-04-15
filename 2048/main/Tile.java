@@ -10,6 +10,8 @@ import javafx.scene.text.Text;
 
 public class Tile extends Group {
 
+	int increases = 0;
+	boolean fused = false;
 	int value = 2;
 	double fontsize = 55;
 	Rectangle background = new Rectangle();
@@ -21,20 +23,29 @@ public class Tile extends Group {
 		background.setHeight(100);
 		background.setFill(Color.BEIGE);
 		background.setArcHeight(15);
-	    background.setArcWidth(15);
-
+		background.setArcWidth(15);
 
 		number.setFont(Font.font("Verdana", FontWeight.BOLD, fontsize));
 		number.setFill(Color.DIMGRAY);
 
 		number.setTranslateX(-number.getBoundsInLocal().getWidth() / 2);
 		number.setTranslateY(number.getBoundsInLocal().getHeight() / 4);
+			
+			this.getChildren().addAll(background, number);
+		
+	}
+	
+	public void randomSize() {
 
-		this.getChildren().addAll(background, number);
+		if ((int) (Math.random() * 10) + 1 == 1) {
+			increase();
+			System.out.println("Big starter");
+		}
 	}
 
 	public void increase() {
 		value += value;
+		increases++;
 
 		double oldwidth = number.getBoundsInLocal().getWidth();
 
@@ -71,24 +82,52 @@ public class Tile extends Group {
 
 	}
 
-	public void move(KeyCode key) {
-		switch (key) {
-		case LEFT:
-			this.setTranslateX(this.getTranslateX() -110);
-			break;
-		case RIGHT:
-			this.setTranslateX(this.getTranslateX() + 110);
-			break;
-		case UP:
-			this.setTranslateY(this.getTranslateY() - 110);
-			break;
-		case DOWN:
-			this.setTranslateY(this.getTranslateY() + 110);
-			break;
+//	public void move(KeyCode key) {
+//		switch (key) {
+//		case LEFT:
+//			this.setTranslateX(this.getTranslateX() - 110);
+//			break;
+//		case RIGHT:
+//			this.setTranslateX(this.getTranslateX() + 110);
+//			break;
+//		case UP:
+//			this.setTranslateY(this.getTranslateY() - 110);
+//			break;
+//		case DOWN:
+//			this.setTranslateY(this.getTranslateY() + 110);
+//			break;
+//
+//		default:
+//			break;
+//		}
+//	}
 
-		default:
-			break;
-		}
+	public int getValue() {
+
+		return value;
 	}
 
+	public boolean getFuse() {
+		return fused;
+	}
+	
+	public void switchFuse() {
+		if (fused) {
+			fused = false;
+		} else {
+			fused = true;
+		}
+	}
+	
+	public int getIncreases() {
+		return increases;
+	}
+	
+	public void setup(int amount) {
+		for (int i = 0; i < amount; i++) {
+			increase();
+		}
+	}
+	
+	
 }

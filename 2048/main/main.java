@@ -22,44 +22,69 @@ public class main extends Application {
 
 		Background back = new Background(4);
 		root.getChildren().add(back);
-
-		Tile tile = new Tile();
-		root.getChildren().add(tile);
-		tile.setTranslateX(10);
-		tile.setTranslateY(10);
 		
-		Tile tile2 = new Tile();
-		root.getChildren().add(tile2);
-		tile2.setTranslateX(120);
-		tile2.setTranslateY(120);
+		GameController gc = new GameController();
+		
+		
+		
+		
+		Tile[][] grid = new Tile[4][4];
+		
+		gc.spawn(grid);
+		
+		gc.spawn(grid);
+		
 
+		
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid[i].length; j++) {
+				if (grid[i][j] != null) {
+					grid[i][j].setTranslateX(10 + (j * 110));
+					grid[i][j].setTranslateY(10 + (i * 110));
+					root.getChildren().add(grid[i][j]);
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		scene.setOnKeyPressed(e -> {
 
 			KeyCode key = e.getCode();
 
-			switch (key) {
-			case LEFT:
-				tile2.move(key);
-				tile.move(key);
-				break;
-			case RIGHT:
-				tile2.move(key);
-				tile.move(key);
-				break;
-			case UP:
-				tile2.move(key);
-				tile.move(key);
-				break;
-			case DOWN:
-				tile2.move(key);
-				tile.move(key);
-				break;
-			case SPACE:
-				tile2.increase();
-				tile.move(key);
-				break;
-			default:
-				break;
+			if (key == KeyCode.LEFT || key == KeyCode.RIGHT || key == KeyCode.UP || key == KeyCode.DOWN) {
+				for (int i = 0; i < grid.length; i++) {
+					for (int j = 0; j < grid[i].length; j++) {
+						if (grid[i][j] != null) {
+							root.getChildren().remove(grid[i][j]);
+						}
+					}
+				}
+				
+				gc.move(grid, key);
+				
+				gc.spawn(grid);
+				
+				for (int i = 0; i < grid.length; i++) {
+					for (int j = 0; j < grid[i].length; j++) {
+						if (grid[i][j] != null) {
+							grid[i][j].setTranslateX(10 + (j * 110));
+							grid[i][j].setTranslateY(10 + (i * 110));
+							root.getChildren().add(grid[i][j]);
+						}
+					}
+				}
 			}
 
 		});
