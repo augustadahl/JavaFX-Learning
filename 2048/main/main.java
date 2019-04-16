@@ -72,9 +72,18 @@ public class main extends Application {
 					}
 				}
 				
+				
+				
+				Tile[][] comparer = gc.copy(grid);
+
 				gc.move(grid, key);
 				
-				gc.spawn(grid);
+				if (gc.compare(grid, comparer)) {
+					gc.spawn(grid);
+				}
+				
+				
+				
 				
 				for (int i = 0; i < grid.length; i++) {
 					for (int j = 0; j < grid[i].length; j++) {
