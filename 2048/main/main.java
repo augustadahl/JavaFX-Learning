@@ -46,18 +46,7 @@ public class main extends Application {
 			}
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		scene.setOnKeyPressed(e -> {
 
