@@ -11,7 +11,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class main extends Application {
+public class launcher extends Application {
 
 	public static int WindowWidth = 450;
 	public static int WindowHeight = 450;
@@ -19,6 +19,8 @@ public class main extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
 
+		primaryStage.setTitle("2048");
+		
 		Group root = new Group();
 		Scene scene = new Scene(root, WindowWidth, WindowHeight, Color.SKYBLUE);
 
