@@ -1,10 +1,11 @@
 package javafx;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
 public class Star extends Polygon{
 
-	public Star(double radius) {
+	public Star(double radius, Color color) {
 		
 		double v = 360 / 5;
 		
@@ -13,6 +14,7 @@ public class Star extends Polygon{
 			double y = Math.cos(Math.toRadians(108 + v * 2 * i)) * radius;
 			getPoints().add(x);
 			getPoints().add(y);
+			setFill(color);
 		}
 		
 		
