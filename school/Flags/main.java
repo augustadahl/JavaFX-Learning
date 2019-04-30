@@ -32,7 +32,7 @@ public class main extends Application{
 				
 				//flagga.scaleXProperty()
 				
-				size += 0.5 * dirr;
+				size += 0.1 * dirr;
 				if (size > 500 || size < 100) {
 					dirr *= -1;
 				}
