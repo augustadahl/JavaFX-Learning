@@ -67,7 +67,7 @@ public class former extends Application{
 		
 		
 		
-		Star star = new Star(50);
+		Star star = new Star(50, Color.WHEAT);
 		star.setTranslateX(250);
 		star.setTranslateY(250);
 		root.getChildren().add(star);
