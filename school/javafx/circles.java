@@ -12,39 +12,34 @@ public class circles extends Application{
 
 	public void start(Stage primaryStage) throws Exception {
 		Group root = new Group();
-		Scene scene = new Scene(root,500,500,Color.SKYBLUE);
+		Scene scene = new Scene(root,500,500,Color.BLACK);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
 		
 		
-		Circle circle = new Circle();
-		circle.setRadius(20);
-		root.getChildren().add(circle);
+		Circle earth = new Circle();
+		earth.setRadius(20);
+		earth.setFill(Color.BLUE);
+		root.getChildren().add(earth);
 		
 		AnimationTimer at = new AnimationTimer() {
 			
-			double X = 100;
+			double X = 0;
 			double Y = 0;
 			
-			int dirrX = 1;
-			int dirrY = 1;
+			double t = 0;
 			
 			public void handle(long now) {
 				
-				circle.setTranslateX(primaryStage.getWidth()/2 - circle.getRadius() + X);
-				circle.setTranslateY(primaryStage.getHeight()/2 - circle.getRadius() + Y);
+				X = 100 * Math.cos(t);
+				Y = 100 * Math.sin(t);
 				
-				X += 1 * dirrX;
-				Y += 1 * dirrY;
 				
-				if (X > -100 || X < 100) {
-					dirrX *= -1;
-				}
+				earth.setTranslateX(primaryStage.getWidth()/2 - earth.getRadius() + X);
+				earth.setTranslateY(primaryStage.getHeight()/2 - earth.getRadius() + Y);
 				
-				if (Y > -100 || Y < 100) {
-					dirrY *= -1;
-				}
+				t += 0.01;
 				
 			}
 		};
