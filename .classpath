@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="school"/>
 	<classpathentry kind="src" path="2048"/>
 	<classpathentry kind="src" path="Tetris"/>
+	<classpathentry kind="src" path="Snake"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
