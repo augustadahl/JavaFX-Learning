@@ -40,7 +40,7 @@ public class System extends Application {
 
 		for (int i = 0; i < 1000; i++) {
 //			
-			Star star = new Star(Math.random() * 2, Color.WHITE);
+			Star star = new Star(Math.random() , Color.WHITE);
 			star.setTranslateX(Math.random() * 600);
 			star.setTranslateY(Math.random() * 600);
 			root.getChildren().add(star);
@@ -67,17 +67,17 @@ public class System extends Application {
 		hourDisplay.setFill(Color.WHITE);
 		root.getChildren().add(hourDisplay);
 
-		Circle sun = new Circle(40);
+		Circle sun = new Circle(30);
 		sun.setFill(Color.YELLOW);
 		sun.setTranslateX(primaryStage.getWidth() / 2);
 		sun.setTranslateY(primaryStage.getHeight() / 2);
 		root.getChildren().add(sun);
 
-		double radius = 20;
+		double radius = 15;
 		Earth earth = new Earth(radius);
 		root.getChildren().add(earth);
 
-		Circle moon = new Circle(5);
+		Circle moon = new Circle(4);
 		moon.setFill(Color.GRAY);
 		root.getChildren().add(moon);
 
@@ -93,26 +93,57 @@ public class System extends Application {
 
 				earthDeg += speed;
 				earthRad = earthDeg * Math.PI / 180;
-				earthX = 200 * Math.cos(earthRad);
-				earthY = 200 * Math.sin(earthRad);
-				earth.setTranslateX(primaryStage.getWidth() / 2 + earthX);
+				earthX = 200 * Math.cos(-earthRad);
+				earthY = 200 * Math.sin(-earthRad);
+				earth.setTranslateX((primaryStage.getWidth()/2) + earthX);
 				earth.setTranslateY(primaryStage.getHeight() / 2 + earthY);
-				earth.setRotate(earthDeg * 365.25);
+				earth.setRotate(earthDeg * 365);
 
 				moonDeg = days * 360 / 29.5;
 				moonRad = moonDeg * Math.PI / 180;
-				moonX = 50 * Math.cos(moonRad);
-				moonY = 50 * Math.sin(moonRad);
+				moonX = 60 * Math.cos(-moonRad);
+				moonY = 60 * Math.sin(-moonRad);
 				moon.setTranslateX(earth.getTranslateX() - +moonX);
 				moon.setTranslateY(earth.getTranslateY() - +moonY);
 
 				days = (earthDeg * 365 / 360);
 
-				dayCount.setText("Day: " + Integer.toString((int) (days % 365)));
-				yearDisplay.setText("year: " + Integer.toString((int) (days / 365)));
+				dayCount.setText("Day: " + Long.toString(1 + (long) (days % 365)));
+				yearDisplay.setText("year: " + Long.toString((long) (days / 365)));
 				levelDisplay.setText("speed: " + Double.toString(level) + "x");
-				hourDisplay.setText("time: " + Integer.toString((int) (days * 24) % 24) + ":"
+				hourDisplay.setText("time: " + Long.toString((long) (days * 24) % 24) + ":"
 						+ Integer.toString((int) (days * 1440) % 60));
+				
+				
+				if ((int) (days / 365) > 50000) {
+					sun.setRadius(sun.getRadius() - 1);
+					if (sun.getRadius() < 20) {
+						sun.setFill(Color.WHITE);
+					}
+				} else if ((int) (days / 365) > 5000) {
+					sun.setRadius(sun.getRadius() + 0.5);
+					if (sun.getRadius() > 60) {
+						sun.setFill(Color.RED);
+					}
+				} else {
+					sun.setRadius(sun.getRadius() - 0.5);
+					if (sun.getRadius() < 60) {
+						sun.setFill(Color.YELLOW);
+					}
+				}
+				
+				if (sun.getRadius() > 200) {
+					sun.setRadius(200);
+				} 
+				
+				if ((int) (days / 365) < 5000 && sun.getRadius() < 30) {
+					sun.setRadius(30);
+				}
+				
+				if (sun.getRadius() < 10) {
+					sun.setRadius(10);
+				} 
+				
 			}
 		};
 
