@@ -14,7 +14,7 @@ public class Goering extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
-		Nasse flag = new Nasse(200, 1);
+		Nasse flag = new Nasse(500, 1);
 		flag.setTranslateX(primaryStage.getWidth()/2);
 		flag.setTranslateY(primaryStage.getHeight()/2);
 		root.getChildren().add(flag);
