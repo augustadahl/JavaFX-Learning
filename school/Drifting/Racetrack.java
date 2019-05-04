@@ -19,7 +19,7 @@ public class Racetrack extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
 		Group root = new Group();
-		Scene scene = new Scene(root, 1600, 900, Color.DIMGREY);
+		Scene scene = new Scene(root, 1200, 600, Color.DIMGREY);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 

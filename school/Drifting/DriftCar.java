@@ -79,11 +79,11 @@ public class DriftCar extends Group {
 			speed = -4;
 		}
 		
-		if (speed > 0) {
+		if (speed > 0.06) {
 			car.setTranslateX(car.getTranslateX() - Math.cos(Math.toRadians(car.getRotate())) * speed);
 			car.setTranslateY(car.getTranslateY() - Math.sin(Math.toRadians(car.getRotate())) * speed);
 			speed -= engineBraking;
-		} else if (speed < 0) {
+		} else if (speed < -0.06) {
 			car.setTranslateX(car.getTranslateX() - Math.cos(Math.toRadians(car.getRotate())) * speed);
 			car.setTranslateY(car.getTranslateY() - Math.sin(Math.toRadians(car.getRotate())) * speed);
 			speed += engineBraking;
