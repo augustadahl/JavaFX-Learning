@@ -22,8 +22,8 @@ public class DriftCar extends Group {
 
 	// steering, handling and grip
 	ArrayList<Double> directionHistory = new ArrayList<Double>(); // keeps track of latest carDirections
-	double steeringAngle = 0.2; // the "angle of your wheel"
-	double maxSteeringAngle = 0.3; // the max "angle of your wheel"
+	double steeringAngle = 0.4; // the "angle of your wheel"
+	double maxSteeringAngle = 0.2; // the max "angle of your wheel"
 	double carDirection = 0; // the current direction the car is pointing
 	double absoluteDirection = 0; // the direction the car will go, calculated by running grip data and such;
 	double gripValue = 1; // how good grip the car has
@@ -31,11 +31,11 @@ public class DriftCar extends Group {
 	boolean turning = false;
 
 	// speed, acceleration and braking
-	double acceleration = 0.2; // how fast you accelerate
+	double acceleration = 0.4; // how fast you accelerate
 	double maxVelocity = 40; // maximum speed
 	double speed = 0; // current speed
-	double engineBraking = 0.05; // how much enginebraking the car has
-	double brakePower = 0.5; // how good brakes the car has
+	double engineBraking = 0.1; // how much enginebraking the car has
+	double brakePower = 1; // how good brakes the car has
 
 	public DriftCar(double size) {
 
@@ -60,17 +60,24 @@ public class DriftCar extends Group {
 	}
 
 	public void rotate(KeyCode key) {
-
-		if (carDirection - absoluteDirection < 90 && absoluteDirection - carDirection < 90) {
-			if (key.equals(KeyCode.A)) {
-				car.setRotate(car.getRotate() - steeringAngle * reverseDiff * speed);
-				carDirection = (car.getRotate() - steeringAngle * reverseDiff * speed);
+		
+		if (key.equals(KeyCode.D)) {
+			if (steeringAngle < maxSteeringAngle * difference) {
+				steeringAngle += 0.03;
 			}
+		}
+		
+		if (key.equals(KeyCode.A)) {
+			if (steeringAngle > -maxSteeringAngle * difference) {
+				steeringAngle -= 0.03;
+			}
+		}
+		
+		if (carDirection - absoluteDirection < 90 && absoluteDirection - carDirection < 90) {
 
-			if (key.equals(KeyCode.D)) {
 				car.setRotate(car.getRotate() + steeringAngle * reverseDiff * speed);
 				carDirection = (car.getRotate() + steeringAngle * reverseDiff * speed);
-			}
+				
 		}
 		
 		
@@ -125,24 +132,39 @@ public class DriftCar extends Group {
 //			speed = 0;
 //		}
 
-		directionHistory.add(carDirection);
+		
 
+//		if (speed < 20) {
+//			directionHistory.clear();
+//		}
+		
+		directionHistory.add(carDirection);
+		
 		for (int i = 0; i < directionHistory.size(); i++) {
-			if (directionHistory.size() > 1 + (int) speed * 2) {
+			if (directionHistory.size() > (int) 1 + (speed * reverseDiff) * ((speed * reverseDiff) /15)) {
 				directionHistory.remove(0);
 			}
 		}
 
 		double all = 0;
+		
+		int ammount = 0;
 
 		for (int i = 0; i < directionHistory.size(); i++) {
-			all += directionHistory.get(i);
+			for (int j = 0; j < i+1; j++) {
+				all += directionHistory.get(i);
+				ammount++;
+			}
 		}
 
-		absoluteDirection = all / directionHistory.size();
+		absoluteDirection = all / ammount;
 
 		absoluteDirection = (absoluteDirection + carDirection) / 2;
 
+		
+//		absoluteDirection = carDirection;
+		
+		
 		if (speed > (engineBraking + 0.01) * difference) {
 			car.setTranslateX(car.getTranslateX() - Math.cos(Math.toRadians(absoluteDirection)) * speed);
 			car.setTranslateY(car.getTranslateY() - Math.sin(Math.toRadians(absoluteDirection)) * speed);
@@ -155,6 +177,21 @@ public class DriftCar extends Group {
 			speed = 0;
 		}
 
+		
+		
+		if (steeringAngle *difference> 0.02 * difference) {
+			steeringAngle -= 0.02 * difference;
+		} else if (steeringAngle * difference < -0.02 *difference) {
+			steeringAngle += 0.02 *difference;
+		} else {
+			steeringAngle = 0;
+		}
+			
+		
+		maxSteeringAngle = 0.5 * (1-speed * reverseDiff/(maxVelocity * reverseDiff));
+		
+		
+		
 	}
 
 }
