@@ -23,7 +23,7 @@ public class Racetrack extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
-		DriftCar bil = new DriftCar(40);
+		DriftCar bil = new DriftCar(20);
 		root.getChildren().add(bil);
 		
 		Text position = new Text(5, 15, "filler");

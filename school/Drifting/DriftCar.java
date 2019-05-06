@@ -141,7 +141,7 @@ public class DriftCar extends Group {
 		directionHistory.add(carDirection);
 		
 		for (int i = 0; i < directionHistory.size(); i++) {
-			if (directionHistory.size() > (int) 1 + (speed * reverseDiff) * ((speed * reverseDiff) /15)) {
+			if (directionHistory.size() > 200) {//(int) 1 + (speed * reverseDiff) * ((speed * reverseDiff) /15)) {
 				directionHistory.remove(0);
 			}
 		}
