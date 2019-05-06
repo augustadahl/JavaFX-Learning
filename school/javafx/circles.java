@@ -39,7 +39,7 @@ public class circles extends Application{
 				earth.setTranslateX(primaryStage.getWidth()/2 - earth.getRadius() + X);
 				earth.setTranslateY(primaryStage.getHeight()/2 - earth.getRadius() + Y);
 				
-				t += 0.01;
+				t += 0.5;
 				
 			}
 		};

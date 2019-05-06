@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
@@ -19,16 +21,45 @@ public class Racetrack extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
 		Group root = new Group();
-		Scene scene = new Scene(root, 1200, 600, Color.DIMGREY);
+		Group background = new Group();
+		Scene scene = new Scene(root, 1200, 600, Color.WHITE);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
-		DriftCar bil = new DriftCar(20);
+		int tileSize = 100;
+		int pattern = 0; //
+		for (int y = -50; y < 100; y++) {
+			for (int x = -50 + pattern; x < 100; x += 2) {
+				Rectangle tile = new Rectangle();
+				tile.setWidth(tileSize);
+				tile.setHeight(tileSize);
+				tile.setTranslateX(tileSize * x);
+				tile.setTranslateY(tileSize * y);
+				background.getChildren().add(tile);
+			}
+			
+			if (pattern == 0) {
+				pattern++;
+			}else {
+				pattern--;
+			}
+			
+		}
+		
+		root.getChildren().add(background);
+		
+		DriftCar bil = new DriftCar(40);
 		root.getChildren().add(bil);
 		
 		Text position = new Text(5, 15, "filler");
+		position.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+		position.setFill(Color.CADETBLUE);
 		root.getChildren().add(position);
 
+		Rotate backgroundRotate = new Rotate();
+		background.getTransforms().add(backgroundRotate);
+		
+		
 		AnimationTimer at = new AnimationTimer() {
 			
 			
@@ -60,6 +91,14 @@ public class Racetrack extends Application {
 				bil.execute();
 				
 				position.setText(bil.position());
+				
+
+				backgroundRotate.setPivotX(-bil.positionX);
+				backgroundRotate.setPivotY(-bil.positionY);
+				backgroundRotate.setAngle(bil.absoluteDirection);
+				background.setTranslateX(-bil.positionX);
+				background.setTranslateY(-bil.positionY);
+				
 
 			}
 		};
