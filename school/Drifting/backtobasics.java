@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 
 public class backtobasics extends Application {
@@ -24,7 +25,7 @@ public class backtobasics extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
-		int tileSize = 10;
+		int tileSize = 20;
 
 		for (int y = 0; y < 100; y++) {
 			for (int x = 0; x < 100; x++) {
@@ -47,7 +48,11 @@ public class backtobasics extends Application {
 
 		Rotate rotate = new Rotate();
 		background.getTransforms().add(rotate);
-
+		
+		Scale scale = new Scale();
+//		center.getTransforms().add(scale);
+		background.getTransforms().add(scale);
+		
 		AnimationTimer at = new AnimationTimer() {
 
 			double origoX = primaryStage.getWidth() / 2;
@@ -65,33 +70,61 @@ public class backtobasics extends Application {
 				for (KeyCode key : keysPressed) {
 
 					switch (key) {
-					case A:
+					case Q:
 						rotate.setAngle(rotate.getAngle() + 2);
 						break;
-					case D:
+					case E:
 						rotate.setAngle(rotate.getAngle() - 2);
 						break;
 					case W:
 						background.setTranslateX(
-								background.getTranslateX() + Math.sin(Math.toRadians(rotate.getAngle())) * 10);
+								background.getTranslateX() + Math.sin(Math.toRadians(rotate.getAngle())) * 20);
 						background.setTranslateY(
-								background.getTranslateY() + Math.cos(Math.toRadians(rotate.getAngle())) * 10);
+								background.getTranslateY() + Math.cos(Math.toRadians(rotate.getAngle())) * 20);
 						break;
 					case S:
 						background.setTranslateX(
-								background.getTranslateX() - Math.sin(Math.toRadians(rotate.getAngle())) * 10);
+								background.getTranslateX() - Math.sin(Math.toRadians(rotate.getAngle())) * 20);
 						background.setTranslateY(
-								background.getTranslateY() - Math.cos(Math.toRadians(rotate.getAngle())) * 10);
+								background.getTranslateY() - Math.cos(Math.toRadians(rotate.getAngle())) * 20);
 						break;
-
+					case A:
+						background.setTranslateX(
+								background.getTranslateX() + Math.sin(Math.toRadians(rotate.getAngle() + 90)) * 20);
+						background.setTranslateY(
+								background.getTranslateY() + Math.cos(Math.toRadians(rotate.getAngle() + 90)) * 20);
+						break;
+					case D:
+						background.setTranslateX(
+								background.getTranslateX() + Math.sin(Math.toRadians(rotate.getAngle() - 90)) * 20);
+						background.setTranslateY(
+								background.getTranslateY() + Math.cos(Math.toRadians(rotate.getAngle() - 90)) * 20);
+						break;
+					case UP:
+						scale.setX(scale.getX() * 1.05);
+						scale.setY(scale.getY() * 1.05);
+						center.setScaleX(scale.getX());
+						center.setScaleY(scale.getY());
+						break;
+					case DOWN:
+						scale.setX(scale.getX() * 0.95);
+						scale.setY(scale.getY() * 0.95);
+						center.setScaleX(scale.getX());
+						center.setScaleY(scale.getY());
+						break;	
 					default:
 						break;
+						
+						//för att gå i sidled testa A && W och ta vinkel 45grader
+						
 					}
 
 				}
 
 				rotate.setPivotX(center.getTranslateX() - background.getTranslateX());
 				rotate.setPivotY(center.getTranslateY() - background.getTranslateY());
+				scale.setPivotX(center.getTranslateX() - background.getTranslateX());
+				scale.setPivotY(center.getTranslateY() - background.getTranslateY());
 
 				origoX = primaryStage.getWidth() / 2;
 				origoY = primaryStage.getHeight() / 2;
