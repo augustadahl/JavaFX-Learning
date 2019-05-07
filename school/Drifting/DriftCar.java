@@ -31,8 +31,8 @@ public class DriftCar extends Group {
 	boolean turning = false;
 
 	// speed, acceleration and braking
-	double acceleration = 0.4; // how fast you accelerate
-	double maxVelocity = 40; // maximum speed
+	double acceleration = 0.2; // how fast you accelerate
+	double maxVelocity = 20; // maximum speed
 	double speed = 0; // current speed
 	double engineBraking = 0.1; // how much enginebraking the car has
 	double brakePower = 1; // how good brakes the car has
