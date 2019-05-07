@@ -48,7 +48,7 @@ public class Racetrack extends Application {
 		
 		root.getChildren().add(background);
 		
-		DriftCar bil = new DriftCar(40);
+		DriftCar bil = new DriftCar(20);
 		root.getChildren().add(bil);
 		
 		Text position = new Text(5, 15, "filler");
@@ -93,11 +93,11 @@ public class Racetrack extends Application {
 				position.setText(bil.position());
 				
 
-				backgroundRotate.setPivotX(-bil.positionX);
-				backgroundRotate.setPivotY(-bil.positionY);
-				backgroundRotate.setAngle(bil.absoluteDirection);
-				background.setTranslateX(-bil.positionX);
-				background.setTranslateY(-bil.positionY);
+//				backgroundRotate.setPivotX(-bil.positionX);
+//				backgroundRotate.setPivotY(-bil.positionY);
+//				backgroundRotate.setAngle(bil.absoluteDirection);
+//				background.setTranslateX(-bil.positionX);
+//				background.setTranslateY(-bil.positionY);
 				
 
 			}

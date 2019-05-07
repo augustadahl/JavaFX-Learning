@@ -141,47 +141,47 @@ public class DriftCar extends Group {
 //			directionHistory.clear();
 //		}
 		
-//		directionHistory.add(carDirection);
-//		
-//		for (int i = 0; i < directionHistory.size(); i++) {
-//			if (directionHistory.size() > 200) {//(int) 1 + (speed * reverseDiff) * ((speed * reverseDiff) /15)) {
-//				directionHistory.remove(0);
-//			}
-//		}
-//
-//		double all = 0;
-//		
-//		int ammount = 0;
-//
-//		for (int i = 0; i < directionHistory.size(); i++) {
-//			for (int j = 0; j < i+1; j++) {
-//				all += directionHistory.get(i);
-//				ammount++;
-//			}
-//		}
-//
-//		absoluteDirection = all / ammount;
-//
-//		absoluteDirection = (absoluteDirection + carDirection) / 2;
+		directionHistory.add(carDirection);
+		
+		for (int i = 0; i < directionHistory.size(); i++) {
+			if (directionHistory.size() > 200) {//(int) 1 + (speed * reverseDiff) * ((speed * reverseDiff) /15)) {
+				directionHistory.remove(0);
+			}
+		}
+
+		double all = 0;
+		
+		int ammount = 0;
+
+		for (int i = 0; i < directionHistory.size(); i++) {
+			for (int j = 0; j < i+1; j++) {
+				all += directionHistory.get(i);
+				ammount++;
+			}
+		}
+
+		absoluteDirection = all / ammount;
+
+		absoluteDirection = (absoluteDirection + carDirection) / 2;
 
 		
-		absoluteDirection = carDirection;
+//		absoluteDirection = carDirection;
 		
 		
 		if (speed > (engineBraking + 0.01) * difference) {
-//			car.setTranslateX(car.getTranslateX() - Math.cos(Math.toRadians(absoluteDirection)) * speed);
-//			car.setTranslateY(car.getTranslateY() - Math.sin(Math.toRadians(absoluteDirection)) * speed);
+			car.setTranslateX(car.getTranslateX() - Math.cos(Math.toRadians(absoluteDirection)) * speed);
+			car.setTranslateY(car.getTranslateY() - Math.sin(Math.toRadians(absoluteDirection)) * speed);
 			
-			positionX = positionX - Math.cos(Math.toRadians(absoluteDirection)) * speed;
-			positionY = positionY - Math.sin(Math.toRadians(absoluteDirection)) * speed;
+//			positionX = positionX - Math.cos(Math.toRadians(absoluteDirection)) * speed;
+//			positionY = positionY - Math.sin(Math.toRadians(absoluteDirection)) * speed;
 			
 			speed -= engineBraking * difference;
 		} else if (speed < (engineBraking - 0.01) * difference) {
-//			car.setTranslateX(car.getTranslateX() - Math.cos(Math.toRadians(absoluteDirection)) * speed);
-//			car.setTranslateY(car.getTranslateY() - Math.sin(Math.toRadians(absoluteDirection)) * speed);
+			car.setTranslateX(car.getTranslateX() - Math.cos(Math.toRadians(absoluteDirection)) * speed);
+			car.setTranslateY(car.getTranslateY() - Math.sin(Math.toRadians(absoluteDirection)) * speed);
 			
-			positionX = positionX - Math.cos(Math.toRadians(absoluteDirection)) * speed;
-			positionY = positionY - Math.sin(Math.toRadians(absoluteDirection)) * speed;
+//			positionX = positionX - Math.cos(Math.toRadians(absoluteDirection)) * speed;
+//			positionY = positionY - Math.sin(Math.toRadians(absoluteDirection)) * speed;
 			
 			speed += engineBraking * difference;
 		} else {
