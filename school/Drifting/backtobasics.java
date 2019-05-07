@@ -20,7 +20,7 @@ public class backtobasics extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		Group root = new Group();
 		Group background = new Group();
-		Scene scene = new Scene(root, 1200, 600, Color.WHITE);
+		Scene scene = new Scene(root, 800, 400, Color.WHITE);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
@@ -63,7 +63,7 @@ public class backtobasics extends Application {
 				center.setTranslateY(primaryStage.getHeight()/1.5);
 				
 				background.setTranslateX(background.getTranslateX() - origoX + primaryStage.getWidth()/2);
-				background.setTranslateY(background.getTranslateY() - origoY + primaryStage.getHeight()/2);
+				background.setTranslateY(background.getTranslateY() - origoY + primaryStage.getHeight()/1.5);
 				
 				rotate.setPivotX(center.getTranslateX() - background.getTranslateX());
 				rotate.setPivotY(center.getTranslateY() - background.getTranslateY());
@@ -108,7 +108,7 @@ public class backtobasics extends Application {
 
 				
 				origoX = primaryStage.getWidth()/2;
-				origoY = primaryStage.getHeight()/2;
+				origoY = primaryStage.getHeight()/1.5;
 				
 			
 				
