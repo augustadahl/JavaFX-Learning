@@ -1,7 +1,6 @@
 package Drifting;
 
 import java.util.ArrayList;
-
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -144,7 +143,7 @@ public class DriftCar extends Group {
 		directionHistory.add(carDirection);
 		
 		for (int i = 0; i < directionHistory.size(); i++) {
-			if (directionHistory.size() > 200) {//(int) 1 + (speed * reverseDiff) * ((speed * reverseDiff) /15)) {
+			if (directionHistory.size() > (int) 1 + (speed * reverseDiff) * ((speed * reverseDiff) /3)) {
 				directionHistory.remove(0);
 			}
 		}
