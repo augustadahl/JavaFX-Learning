@@ -15,7 +15,7 @@ public class Straight extends Group{
 		this.angle = angle;
 		this.lenght = lenght;
 		
-		double stripewith = 5;
+		double stripewdith = 5;
 		
 		Rectangle asphalt = new Rectangle();
 		asphalt.setHeight(lenght);
@@ -26,14 +26,14 @@ public class Straight extends Group{
 		
 		Rectangle left = new Rectangle();
 		left.setHeight(lenght);
-		left.setWidth(stripewith);
-		left.setTranslateX(-width/2 - stripewith);
+		left.setWidth(stripewdith);
+		left.setTranslateX(-width/2 - stripewdith);
 		left.setTranslateY(-lenght);
 		left.setFill(Color.WHITE);
 		
 		Rectangle right = new Rectangle();
 		right.setHeight(lenght);
-		right.setWidth(stripewith);
+		right.setWidth(stripewdith);
 		right.setTranslateX(width/2);
 		right.setTranslateY(-lenght);
 		right.setFill(Color.WHITE);
