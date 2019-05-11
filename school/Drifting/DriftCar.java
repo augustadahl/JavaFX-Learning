@@ -101,31 +101,31 @@ public class DriftCar extends Group {
 			speed = reverseMax * difference;
 		}
 		
-//		directionHistory.add(carDirection);
-//		
-//		for (int i = 0; i < directionHistory.size(); i++) {
-//			if (directionHistory.size() > (int) 1 + (speed * reverseDiff) * ((speed * reverseDiff) /3)) {
-//				directionHistory.remove(0);
-//			}
-//		}
-//
-//		double all = 0;
-//		
-//		int ammount = 0;
-//
-//		for (int i = 0; i < directionHistory.size(); i++) {
-//			for (int j = 0; j < i+1; j++) {
-//				all += directionHistory.get(i);
-//				ammount++;
-//			}
-//		}
-//
-//		absoluteDirection = all / ammount;
-//
-//		absoluteDirection = (absoluteDirection + carDirection) / 2;
+		directionHistory.add(carDirection);
+		
+		for (int i = 0; i < directionHistory.size(); i++) {
+			if (directionHistory.size() > (int) 1 + (speed * reverseDiff) * ((speed * reverseDiff) /3)) {
+				directionHistory.remove(0);
+			}
+		}
+
+		double all = 0;
+		
+		int ammount = 0;
+
+		for (int i = 0; i < directionHistory.size(); i++) {
+			for (int j = 0; j < i+1; j++) {
+				all += directionHistory.get(i);
+				ammount++;
+			}
+		}
+
+		absoluteDirection = all / ammount;
+
+		absoluteDirection = (absoluteDirection + carDirection) / 2;
 
 		
-		absoluteDirection = carDirection;
+//		absoluteDirection = carDirection;
 		
 		
 		if (speed > (engineBraking + 0.01) * difference) {
