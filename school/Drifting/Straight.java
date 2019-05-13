@@ -48,11 +48,11 @@ public class Straight extends Group{
 	}
 	
 	public double getEndpointX() {
-		return Math.sin(Math.toRadians(angle + 90)) * lenght;
+		return Math.cos(Math.toRadians(angle + 90)) * lenght;
 	}
 	
 	public double getEndpointY() {
-		return Math.cos(Math.toRadians(angle + 90)) * lenght;
+		return Math.sin(Math.toRadians(angle + 90)) * lenght;
 	}
 	
 	public double getStartangleToNext() {

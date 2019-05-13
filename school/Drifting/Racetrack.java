@@ -44,17 +44,17 @@ public class Racetrack extends Application {
 		
 		root.getChildren().add(background);
 		
-		Turn curve = new Turn(false, 200, 150, 70, 90, backgroundColor);
-		curve.setTranslateX(primaryStage.getWidth() / 2);
-		curve.setTranslateY(primaryStage.getHeight() / 2);
-		background.getChildren().add(curve);
-		
-		
-		
-		Straight rak = new Straight(500, 200, curve.getStartangleToNext());
-		rak.setTranslateX(primaryStage.getWidth() / 2 - curve.getEndpointX());
-		rak.setTranslateY(primaryStage.getHeight() / 2 - curve.getEndpointY());
-		background.getChildren().add(rak);
+//		Turn curve = new Turn(false, 200, 150, 70, 90, backgroundColor);
+//		curve.setTranslateX(primaryStage.getWidth() / 2);
+//		curve.setTranslateY(primaryStage.getHeight() / 2);
+//		background.getChildren().add(curve);
+//		
+//		
+//		
+//		Straight rak = new Straight(500, 200, curve.getStartangleToNext());
+//		rak.setTranslateX(primaryStage.getWidth() / 2 - curve.getEndpointX());
+//		rak.setTranslateY(primaryStage.getHeight() / 2 - curve.getEndpointY());
+//		background.getChildren().add(rak);
 		
 		
 		DriftCar car = new DriftCar(40);

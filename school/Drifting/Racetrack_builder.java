@@ -17,14 +17,18 @@ public class Racetrack_builder extends Group{
 		
 		trackWidth = Double.parseDouble(Racetracks.get(0));
 		
-		for (int currentEntity = 0; currentEntity < Racetracks.size(); currentEntity++) {
+		for (int currentEntity = 1; currentEntity < Racetracks.size(); currentEntity++) {
+			System.out.println("ENTITY " + currentEntity);
+			System.out.println("X " + StartX);
+			System.out.println("Y " + StartY);
 			String[] Entity = Racetracks.get(currentEntity).split(" ");			
 			if (Entity[0].charAt(0) == 'S') {
 				Straight straight = new Straight(Double.parseDouble(Entity[1]), trackWidth, StartAngle);
 				straight.setTranslateX(StartX);
 				straight.setTranslateY(StartY);
 				this.getChildren().add(straight);
-				
+				System.out.println(straight.getEndpointX());
+				System.out.println(straight.getEndpointY());
 				StartX += straight.getEndpointX();
 				StartY += straight.getEndpointY();
 			}
