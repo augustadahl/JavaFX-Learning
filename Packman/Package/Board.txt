@@ -1,0 +1,6 @@
+X = wall
+0 = Snack
+' ' = empty
+S = power snack
+G = ghost
+P = player
