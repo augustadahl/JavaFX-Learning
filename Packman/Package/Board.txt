@@ -1,3 +1,5 @@
+f
+f
 X = wall
 0 = Snack
 ' ' = empty
