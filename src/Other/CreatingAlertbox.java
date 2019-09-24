@@ -19,10 +19,10 @@ public class CreatingAlertbox extends Application{
 
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage;
-		window.setTitle("TheNewButton");
+		window.setTitle("Val 2022");
 		
-		button = new Button("The Button");
-		button.setOnAction(e -> AlertBox.display("AlertBox", "You have some unknown Alert"));
+		button = new Button("Gå till vallokalen");
+		button.setOnAction(e -> AlertBox.display("OBSERVERA!", "Stefan Löfven ser dina synder"));
 		
 		StackPane layout = new StackPane();
 		layout.getChildren().add(button);

@@ -19,7 +19,7 @@ public class AlertBox {
 		Label label = new Label();
 		label.setText(message);
 		
-		Button closeButton = new Button("Press to Close");
+		Button closeButton = new Button("Underkasta dig socialdemokraterna!");
 		closeButton.setOnAction(e -> window.close());
 		
 		VBox layout = new VBox(10);
