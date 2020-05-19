@@ -6,7 +6,11 @@
 	<classpathentry kind="src" path="Tetris"/>
 	<classpathentry kind="src" path="Snake"/>
 	<classpathentry kind="src" path="Packman"/>
+<<<<<<< HEAD
 	<classpathentry kind="src" path="pong"/>
+=======
+	<classpathentry kind="src" path="tic"/>
+>>>>>>> 2c162a64c4ac3d71cc60d8b4749445b6f367aebd
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
